@@ -11,6 +11,49 @@ class ATLAS(nn.Module):
 
     Self-attention exchanges content between tokens; cross-attention reads the
     resulting features at query coordinates. Both use relative pose attributes.
+
+    Args:
+        output_dim: Number of predicted channels per query coordinate, such as
+            three RGB channels or image channels plus a segmentation logit.
+        n_latents: Number of spatial tokens in the adapted representation.
+        latent_channels: Number of adapted content features per token, before
+            projection to model_dim.
+        model_dim: Internal feature width for attention and residual blocks.
+            Must be divisible by n_heads.
+        n_self_attn: Number of token self-attention blocks before decoding.
+            Zero skips the self-attention stack.
+        n_heads: Number of self-attention heads. Cross-attention uses one head.
+        content_query: Use receiver content as the self-attention query. If
+            False, construct pair-specific queries from relative geometry.
+        sa_film_base: Base for self-attention keys when content_query is True.
+            "geometry" lets sender content scale and shift geometry embeddings;
+            "content" lets geometry scale and shift content keys. Ignored when
+            content_query is False.
+        freq_q: Initialization scale of learned Fourier frequencies used for
+            attention scores, in both self-attention and cross-attention.
+        freq_v: Initialization scale of learned Fourier frequencies used to
+            modulate attention values. Larger scales start with faster spatial
+            variation; the Fourier projections remain trainable.
+        nearest_k: Maximum nearest tokens per coordinate query in cross-attention.
+            None or a value at least n_latents uses all tokens.
+        sa_nearest_k: Maximum nearest tokens per self-attention query; the token
+            itself is eligible. None or a value at least n_latents uses all tokens.
+        gaussian_window: Add a Gaussian distance bias to cross-attention scores,
+            favoring nearby tokens before softmax.
+        sa_gaussian_window: Apply the same distance bias in self-attention.
+        decoder_ff: Add a residual feed-forward block after cross-attention.
+            Self-attention blocks always include their own feed-forward layers.
+        bi_invariant: Relative geometry: "translation" for translations,
+            "roto_translation" for SE(2) with coord_dim=2, or
+            "roto_translation_3d" for SE(3) with coord_dim=3.
+        coord_dim: Number of spatial coordinate dimensions, usually 2 for images
+            or 3 for volumes. This excludes pose orientation parameters.
+        latent_grid: Optional token counts along each spatial axis, used by
+            ModelFactory for initialization and by attention for Gaussian widths.
+            Supply coord_dim counts whose product is n_latents. None uses an
+            equal-sided grid, requiring a square token count in 2D or a cube in 3D.
+        bounded_pose: Map position parameters through tanh into [-1, 1].
+            Orientation parameters are unaffected.
     """
 
     output_dim: int = 3
