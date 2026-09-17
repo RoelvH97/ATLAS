@@ -2,8 +2,6 @@
 
 ### Optimization Encoders: Rethinking Second-Order Meta-Learning for Neural Fields
 
-Anonymous code release for ICLR review.
-
 ATLAS encodes a signal by adapting the poses and content of a latent pointcloud by
 optimizing a few reconstruction steps. We meta-learn this process end to end, so gradients
 from the outer task objective flow through every inner update and shape the
