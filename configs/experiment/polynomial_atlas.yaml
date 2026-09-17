@@ -1,0 +1,6 @@
+# @package _global_
+defaults:
+  - polynomial
+  - override /model: atlas
+  - override /data: polynomials
+  - _self_

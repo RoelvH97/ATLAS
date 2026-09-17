@@ -1,0 +1,6 @@
+defaults:
+  - base
+  - experiment: cifar_classify_atlas
+  - _self_
+
+task: classify

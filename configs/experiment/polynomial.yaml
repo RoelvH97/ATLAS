@@ -1,0 +1,8 @@
+# @package _global_
+training:
+  epochs: 500
+  content_lr: 0.01
+  meta_sgd: false
+  per_step: false
+  save_every: 10
+  eval_every: 10

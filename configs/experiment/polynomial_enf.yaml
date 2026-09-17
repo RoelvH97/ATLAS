@@ -1,0 +1,9 @@
+# @package _global_
+defaults:
+  - polynomial
+  - override /model: enf
+  - override /data: polynomials
+  - _self_
+training:
+  pose_lr: 1.0
+  content_lr: 30.0

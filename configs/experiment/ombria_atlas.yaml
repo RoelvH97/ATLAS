@@ -1,0 +1,12 @@
+# @package _global_
+defaults:
+  - ombria
+  - override /model: atlas
+  - override /data: ombria
+  - _self_
+model:
+  n_latents: 169
+  sa_nearest_k: 13
+  freq_q: 2.0
+  freq_v: 10.0
+  bi_invariant: roto_translation

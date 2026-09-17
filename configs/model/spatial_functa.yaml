@@ -1,0 +1,9 @@
+type: spatial_functa
+latent_dim: 1024
+spatial_size: 8
+latent_channels: 16
+hidden_dim: 256
+num_layers: 6
+w0: 10.0
+interp_mode: bilinear
+coord_dim: 2

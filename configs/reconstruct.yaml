@@ -1,0 +1,6 @@
+defaults:
+  - base
+  - experiment: cifar_reconstruct_atlas
+  - _self_
+
+task: reconstruct

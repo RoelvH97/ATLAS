@@ -1,0 +1,12 @@
+# @package _global_
+defaults:
+  - ombria
+  - override /model: spatial_functa
+  - override /data: ombria
+  - _self_
+model:
+  spatial_size: 13
+  latent_dim: 10816
+  latent_channels: 64
+training:
+  outer_lr: 0.0001

@@ -1,0 +1,28 @@
+type: polynomials
+root: ${oc.env:ATLAS_DATA_ROOT,./datasets}
+image_size: 32
+channels: 1
+download: false
+n_val: 1024
+split_seed: 0
+batch_size: 32
+num_workers: 0
+inner_coords: 256
+outer_coords: 256
+outer_full_grid: false
+shared_queries: true
+coord_seed: 42
+eval_seed: 1729
+random_flip: false
+limit_train: 0
+limit_eval: 0
+polynomials:
+  degree: 6
+  n_train: 10000
+  n_val: 1024
+  n_test: 1024
+  seed: 0
+  degree_decay: 0.85
+  offset_scale: 0.5
+  target_bound: 0.9
+  min_peak_fraction: 0.65

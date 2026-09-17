@@ -1,0 +1,10 @@
+# @package _global_
+defaults:
+  - polynomial
+  - override /model: functa
+  - override /data: polynomials
+  - _self_
+model:
+  hidden_dim: 256
+training:
+  outer_lr: 0.000003

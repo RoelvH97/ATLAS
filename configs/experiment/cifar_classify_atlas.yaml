@@ -1,0 +1,10 @@
+# @package _global_
+defaults:
+  - cifar_classify
+  - override /model: atlas
+  - override /data: cifar
+  - _self_
+model:
+  n_latents: 64
+  latent_channels: 16
+  sa_nearest_k: 8

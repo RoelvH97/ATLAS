@@ -1,0 +1,5 @@
+type: functa
+latent_dim: 512
+hidden_dim: 512
+num_layers: 15
+w0: 30.0

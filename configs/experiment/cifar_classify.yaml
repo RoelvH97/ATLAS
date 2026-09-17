@@ -1,0 +1,8 @@
+# @package _global_
+data:
+  batch_size: 64
+  random_flip: true
+training:
+  epochs: 100
+  outer_lr: 0.0003
+  checkpoint_policy: last

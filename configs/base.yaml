@@ -1,0 +1,49 @@
+defaults:
+  - model: atlas
+  - data: cifar
+  - training: maml
+  - _self_
+
+task: reconstruct
+mode: train
+checkpoint: null
+trusted_checkpoint: false
+legacy_config: null
+output_dir: runs/${data.type}/${task}/${model.type}/${now:%Y-%m-%d_%H-%M-%S}
+
+evaluation:
+  dtype: float32
+  split: test
+  chunk_size: 8192
+  visuals: 4
+
+classification:
+  num_classes: 10
+  hidden_dim: 0
+  layer_norm: true
+  token_dropout: 0.6
+  weight: 1.0
+  normalize_losses: true
+  learning_rate: 0.002
+  weight_decay: 0.05
+  schedule: cosine
+  warmup_epochs: 5
+
+segmentation:
+  weight: 1.0
+  normalize_losses: true
+
+polynomial_evaluation:
+  fields: 8
+  fit_seed: 1729
+  jacobian_chunk: 64
+
+hydra:
+  run:
+    dir: ${output_dir}
+  sweep:
+    dir: ${output_dir}
+    subdir: ${hydra.job.num}
+  job:
+    chdir: false
+  output_subdir: null

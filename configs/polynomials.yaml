@@ -1,0 +1,6 @@
+defaults:
+  - base
+  - experiment: polynomial_atlas
+  - _self_
+
+task: reconstruct

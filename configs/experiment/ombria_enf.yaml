@@ -1,0 +1,14 @@
+# @package _global_
+defaults:
+  - ombria
+  - override /model: enf
+  - override /data: ombria
+  - _self_
+model:
+  n_latents: 169
+  emb_freq_q: 2.0
+  emb_freq_v: 10.0
+  bi_invariant: roto_translation
+training:
+  pose_lr: 1.0
+  content_lr: 30.0

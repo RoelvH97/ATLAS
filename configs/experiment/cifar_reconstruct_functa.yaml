@@ -1,0 +1,8 @@
+# @package _global_
+defaults:
+  - override /model: functa
+  - override /data: cifar
+  - _self_
+training:
+  meta_sgd: false
+  per_step: false

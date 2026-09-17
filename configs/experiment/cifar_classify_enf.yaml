@@ -1,0 +1,12 @@
+# @package _global_
+defaults:
+  - cifar_classify
+  - override /model: enf
+  - override /data: cifar
+  - _self_
+model:
+  n_latents: 64
+  latent_channels: 16
+training:
+  pose_lr: 1.0
+  content_lr: 30.0

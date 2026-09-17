@@ -1,0 +1,14 @@
+type: enf
+n_latents: 25
+latent_channels: 64
+num_hidden: 128
+att_dim: 64
+num_heads: 3
+nearest_k: 4
+gaussian_window: true
+emb_freq_q: 1.0
+emb_freq_v: 3.0
+bi_invariant: translation
+coord_dim: 2
+latent_grid: null
+bounded_pose: false

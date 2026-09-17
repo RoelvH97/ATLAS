@@ -1,0 +1,6 @@
+# @package _global_
+defaults:
+  - cifar_classify
+  - override /model: spatial_functa
+  - override /data: cifar
+  - _self_

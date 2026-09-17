@@ -1,0 +1,8 @@
+# @package _global_
+defaults:
+  - cifar_classify
+  - override /model: functa
+  - override /data: cifar
+  - _self_
+model:
+  latent_dim: 1024

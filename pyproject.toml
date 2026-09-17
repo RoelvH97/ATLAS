@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "atlas-inr"
+version = "0.1.0"
+description = "Meta-learned neural fields with spatial attention"
+readme = "README.md"
+requires-python = ">=3.11,<3.14"
+dependencies = [
+    "jax==0.9.2",
+    "flax==0.12.6",
+    "optax==0.2.8",
+    "hydra-core==1.3.2",
+    "numpy>=2.1,<3",
+    "torch==2.6.0",
+    "torchvision==0.21.0",
+    "Pillow>=11,<13",
+    "matplotlib>=3.9,<4",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8,<10"]
+cuda = ["jax[cuda12]==0.9.2"]
+
+[tool.setuptools]
+py-modules = ["meta_reconstruct", "meta_classify", "meta_segment", "polynomial_fields"]
+
+[tool.setuptools.package-data]
+configs = ["*.yaml", "data/*.yaml", "model/*.yaml", "training/*.yaml", "experiment/*.yaml"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["models*", "data*", "general_utils*", "meta_learning*", "meta_reconstruction*",
+           "meta_classification*", "meta_segmentation*", "theory*", "configs*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I", "B", "RUF"]
+ignore = ["E741"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["models", "data", "general_utils", "meta_learning", "meta_reconstruction", "meta_classification", "meta_segmentation", "theory"]

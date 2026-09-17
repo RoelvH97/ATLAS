@@ -1,0 +1,6 @@
+defaults:
+  - base
+  - experiment: ombria_atlas
+  - _self_
+
+task: segment
